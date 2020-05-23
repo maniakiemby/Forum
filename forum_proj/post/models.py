@@ -10,7 +10,7 @@ class Post(models.Model):
     comments = models.ForeignKey('Comment', on_delete=models.CASCADE, blank=True, null=True)
 
     def _str__(self):
-        return self.post_title
+        return self.title
 
 class Comment(models.Model):
     author = models.ForeignKey('Post', on_delete=models.CASCADE, max_length=50)

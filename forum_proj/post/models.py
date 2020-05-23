@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Post(models.Model):
-    author = models.ForeignKey('authenticate.Users', on_delete=models.CASCADE, max_length=50)
+    author = models.ForeignKey('user_panel.Users', on_delete=models.CASCADE, max_length=50)
     title = models.CharField(max_length=200)
     content = models.CharField(editable=True, max_length=10000)
     date_modified = models.DateTimeField(auto_now=True)

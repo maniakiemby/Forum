@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <p>Wylogowano !</p>
+    <a href="{% url 'user_panel:login' %}">zaloguj ponownie</a>
+    <a href="{% url 'post:home-view' %}">Kontynuuj przeglądanie</a>
+{% endblock %}

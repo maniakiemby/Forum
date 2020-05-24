@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona domowa</title>
+</head>
+<body>
+    Hello !
+
+    <ul class = "sidebar-nav">
+        {% if user.is_authenticated %}
+            <li> Użytkownik: {{user.get_username}} </li>
+            <li> <a href="{% url 'user_panel:logout' %}? next={{ request.path }}">Wyloguj się</a></li>
+        {% else %}
+            <li>Nie jesteś zalogowany</li>
+            <li> <a href="{% url 'user_panel:login' %}? next={{ request.path }}"> Zaloguj się </a> </li>
+        {% endif %}
+    </ul>
+
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>

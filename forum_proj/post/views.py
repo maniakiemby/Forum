@@ -10,9 +10,15 @@ from django.views.generic import (
 from .forms import PostForm
 from .models import Post, Comment
 
-# LoginRequiredMixin służy do autoryzacji
+
 class PostCreateView(LoginRequiredMixin, CreateView):
-    pass
+    login_url = "../user/accounts/login/"
+    template_name = 'post/post_create.html'
+    form_class = PostForm
+    success_url = '/'
+
+    def form_valid(self, form):
+        return super().form_valid(form)
 
 
 class PostsListView(ListView):

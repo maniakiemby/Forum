@@ -120,3 +120,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Redirect to home URL after login (Default redirects to /accounts/profile/)
+LOGIN_REDIRECT_URL = '/'
+
+# rejestruje wiadomości email w konsoli (można skopiować link do resetowania hasła z konsoli)
+# https://docs.djangoproject.com/en/2.1/topics/email/
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

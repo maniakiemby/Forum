@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>{{ object.title }}</h2>
+<h3>{{ object.content }}</h3>
+
+{% for obj in object.comments %}
+    <p>{{ obj }}</p>
+
+{% endfor %}
+
+{% endblock %}

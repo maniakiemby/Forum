@@ -5,7 +5,7 @@
     <title>Strona domowa</title>
 </head>
 <body>
-    Hello !
+    Hello, {{user}}!
 
     <ul class = "sidebar-nav">
         {% if user.is_authenticated %}
@@ -15,10 +15,12 @@
             <li>Nie jesteś zalogowany</li>
             <li> <a href="{% url 'user_panel:login' %}? next={{ request.path }}"> Zaloguj się </a> </li>
         {% endif %}
+        <li> <a href="{% url 'post:create-user' %}">rejestracja</a></li>
     </ul>
 
     {% block content %}
 
     {% endblock %}
+
 </body>
 </html>

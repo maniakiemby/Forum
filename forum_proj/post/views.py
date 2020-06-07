@@ -5,6 +5,7 @@ from django.views.generic import (
     CreateView,
     ListView,
     DetailView,
+    UpdateView,
 )
 
 from .forms import PostForm
@@ -18,6 +19,7 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     success_url = '/'
 
     def form_valid(self, form):
+        form.instance.author = self.request.user
         return super().form_valid(form)
 
 
@@ -32,3 +34,19 @@ class PostDetail(DetailView):
     def get_object(self):
         id_ = self.kwargs.get('id')
         return get_object_or_404(Post, id=id_)
+
+
+class PostUpdate(LoginRequiredMixin, UpdateView):
+    login_url = "../user/accounts/login/"
+    template_name = 'post/post_update.html'
+    form_class = PostForm
+    queryset = Post.objects.all()
+    success_url = '/'
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Post, id=id_)
+
+    def form_valid(self, form):
+        #print(form.cleaned_data)
+        return super().form_valid(form)

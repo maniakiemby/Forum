@@ -2,10 +2,9 @@
 
 {% block content %}
 
-<b>post will be created by {{ request.user }}</b>
 <form action='.' method='POST'>{% csrf_token %}
     {{ form.as_p }}
-    <input type='submit' value="Zapisz" />
+    <input type='submit' value="Zatwierdź zmiany" />
 </form>
 
 {% endblock %}

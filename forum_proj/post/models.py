@@ -1,11 +1,12 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.conf import settings
 
 
 class Post(models.Model):
-    author = models.ForeignKey('user_panel.Users', on_delete=models.CASCADE, max_length=50)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     content = models.CharField(editable=True, max_length=10000)
     date_modified = models.DateTimeField(auto_now=True)
@@ -21,8 +22,8 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey('Post', on_delete=models.CASCADE)
-    author = models.ForeignKey('user_panel.Users', on_delete=models.CASCADE)
-    content = models.CharField(max_length=500)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.CharField(editable=True, max_length=500)
     date_create = models.DateTimeField(auto_now_add=True)
 

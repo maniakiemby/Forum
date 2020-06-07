@@ -5,7 +5,7 @@
     <title>Strona domowa</title>
 </head>
 <body>
-    Hello !
+    <a href='/'>Forum</a>
 
     <ul class = "sidebar-nav">
         {% if user.is_authenticated %}
@@ -17,7 +17,7 @@
         {% endif %}
     </ul>
 
-    <p><a href="{% url 'post:post-create' %}">Dodaj własny post</a></p>
+    <h2><p><a href="{% url 'post:post-create' %}">Dodaj własny post</a></p></h2>
     {% block content %}
 
     {% endblock %}

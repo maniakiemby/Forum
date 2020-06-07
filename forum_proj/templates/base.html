@@ -15,7 +15,7 @@
             <li>Nie jesteś zalogowany</li>
             <li><a href="{% url 'user_panel:login' %}? next={{ request.path }}">Zaloguj się</a></li>
         {% endif %}
-        <li> <a href="{% url 'post:create-user' %}">rejestracja</a></li>
+        <li> <a href="{% url 'user_panel:create-user' %}">rejestracja</a></li>
     </ul>
 
     <p><a href="{% url 'post:post-create' %}">Dodaj własny post</a></p>

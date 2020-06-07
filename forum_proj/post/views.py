@@ -8,7 +8,7 @@ from django.views.generic import (
     FormView,
 )
 
-from .forms import PostForm, CreateUserForm
+from .forms import PostForm
 from .models import Post, Comment
 
 
@@ -33,14 +33,3 @@ class PostDetail(DetailView):
     def get_object(self):
         id_ = self.kwargs.get('id')
         return get_object_or_404(Post, id=id_)
-
-
-class CreateUserView(FormView):
-    template_name = 'registration/registration.html'
-    form_class = CreateUserForm
-    success_url = '/'
-
-    def form_valid(self, form):
-        form.save()
-        return super(CreateUserView, self).form_valid(form)
-

@@ -6,6 +6,8 @@ from django.views.generic import (
     ListView,
     DetailView,
     UpdateView,
+    FormView,
+    
 )
 
 from .forms import PostForm
@@ -50,3 +52,4 @@ class PostUpdate(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         #print(form.cleaned_data)
         return super().form_valid(form)
+

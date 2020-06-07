@@ -1,8 +1,6 @@
 from django.db import models
 from django.urls import reverse
 from django.contrib.auth.models import User
-from django.contrib.auth import get_user_model
-from django.conf import settings
 
 
 class Post(models.Model):
@@ -22,8 +20,8 @@ class Post(models.Model):
 
 
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    content = models.CharField(editable=True, max_length=500)
+    content = models.CharField(max_length=500)
     date_create = models.DateTimeField(auto_now_add=True)
 

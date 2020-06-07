@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'user_panel/registration_style.css' %}">
+    
+</head>
+<body>
+    <div class="form-container">
+        <form action="" method="post">
+            <h3>Registration</h3>
+            {% csrf_token %}
+            <div class="form-field input-name">
+                <!-- <div>{{ form.username.label }}</div> -->
+                {{form.username}}
+            </div>
+            <div class="form-field input-email">
+                <!-- <div>{{ form.email.label }}</div> -->
+                {{form.email}}
+            </div>
+            <div class="form-field input-password1">
+                <!-- {{ form.password1.label }} -->
+                {{form.password1}}
+            </div>
+            <div class="form-field input-password2">
+                <!-- {{ form.password2.label }} -->
+                {{form.password2}}
+            </div>
+            <div>
+                <button class="form-field button-submit" type="submit">Register account</button>
+            </div>
+            <div class="errors">
+                {{form.errors}}
+            </div>
+            <div>
+                <p class="form-field">Already have an account? <a href="{% url 'user_panel:login' %}? next={{ request.path }}"> Login </a> </p> 
+            </div>
+    </form>
+    </div>
+</body>
+<script src="{% static 'user_panel/registration.js' %}"></script>
+</html>

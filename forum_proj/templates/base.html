@@ -5,7 +5,12 @@
     <title>Strona domowa</title>
 </head>
 <body>
-    <a href='/'>Forum</a>
+    <h2><a href='/'>Forum</a></h2>
+    {% if user.is_authenticated %}
+        <h3>Cześć {{user}}!</h3>
+    {% else %}
+        <h3>Cześć Użytkowniku !</h3>
+    {% endif %}
 
     <ul class = "sidebar-nav">
         {% if user.is_authenticated %}
@@ -15,11 +20,13 @@
             <li>Nie jesteś zalogowany</li>
             <li><a href="{% url 'user_panel:login' %}? next={{ request.path }}">Zaloguj się</a></li>
         {% endif %}
+        <li> <a href="{% url 'user_panel:create-user' %}">rejestracja</a></li>
     </ul>
 
     <h2><p><a href="{% url 'post:post-create' %}">Dodaj własny post</a></p></h2>
     {% block content %}
 
     {% endblock %}
+
 </body>
 </html>

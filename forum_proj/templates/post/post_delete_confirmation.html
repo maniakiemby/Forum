@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action='.' method='POST'>{% csrf_token %}
+    <h2>Czy na pewno chcesz usunąć ten post ?</h2>
+    <h2><p>{{ object.title }}</p></h2>
+    <h3><p>{{ object.content }}</p></h3>
+    <p><input type='submit' value='Usuń ten post'/> <a href='../update/'>Zabierz mnie stąd</a></p>
+</form>
+
+{% endblock %}

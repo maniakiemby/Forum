@@ -4,7 +4,10 @@
 
 <form action='.' method='POST'>{% csrf_token %}
     {{ form.as_p }}
-    <input type='submit' value="Zatwierdź zmiany" />
+    <p>
+        <input type='submit' value="Zatwierdź zmiany" />
+        <a href='../delete/'>całkowicie usuń ten post</a>
+    </p>
 </form>
 
 {% endblock %}

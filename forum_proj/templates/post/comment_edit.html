@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action='.' method='POST'>{% csrf_token %}
+        {{ form.as_p }}
+        <p>
+            <input type='submit' value='zatwierdź zmiany'/>
+            <a href="../delete/">całkowicie usuń komentarz</a>
+        </p>
+    </form>
+{% endblock %}

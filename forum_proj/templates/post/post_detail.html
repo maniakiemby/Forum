@@ -9,12 +9,22 @@
     <a href="update/">Edytuj post</a>
 {% endif %}
 
-{% for obj in object.comments %}
-    <p>{{ obj }}</p>
+    {% for comment in comments %}
+        <h4>{{ comment.author }}</h4>
+        <h4>{{ comment.content }}</h4>
+        <h6>{{ comment.date_create }}</h6>
+        {% if user == comment.author %}
+            <a href="{{ comment.id }}/update/">Edytuj komentarz</a>
+        {% endif %}
+    {% endfor %}
 
+{% if user.is_authenticated %}
+    <form action='.' method='POST'>{% csrf_token %}
+        {{ form.as_p }}
+        <a><input type='submit' value='Dodaj komentarz'/></a>
+    </form>
+{% else %}
+    <h4>Aby dodawać komentarze musisz się <a href="{% url 'user_panel:login' %}? next={{ request.path }}">zalogować</a>.</h4>
+{% endif %}
 
-
-
-{% endfor %}
-
-{% endblock %}
+{% endblock content %}

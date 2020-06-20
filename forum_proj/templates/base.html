@@ -14,16 +14,23 @@
 
     <ul class = "sidebar-nav">
         {% if user.is_authenticated %}
-            <li> Użytkownik: {{user.get_username}} </li>
-            <li><a href="{% url 'user_panel:logout' %}? next={{ request.path }}">Wyloguj się</a></li>
+            <li> Użytkownik:
+                <a href="{% url 'user_panel:user-view' %}">{{ user.get_username }}</a>
+            </li>
+            <li>
+                <a href="{% url 'user_panel:logout' %}? next={{ request.path }}">Wyloguj się</a>
+            </li>
         {% else %}
             <li>Nie jesteś zalogowany</li>
-            <li><a href="{% url 'user_panel:login' %}? next={{ request.path }}">Zaloguj się</a></li>
+            <li>
+                <a href="{% url 'user_panel:login' %}? next={{ request.path }}">Zaloguj się</a>
+            </li>
         {% endif %}
-        <li> <a href="{% url 'user_panel:create-user' %}">rejestracja</a></li>
+        <li>
+            <a href="{% url 'user_panel:create-user' %}">rejestracja</a>
+        </li>
     </ul>
 
-    <h2><p><a href="{% url 'post:post-create' %}">Dodaj własny post</a></p></h2>
     {% block content %}
 
     {% endblock %}

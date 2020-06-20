@@ -2,6 +2,7 @@
 
 
 {% block content %}
+{% include 'post/add_post_navbar.html' %}
 {% for instance in object_list %}
     <p><a href='{{ instance.get_absolute_url }}'>{{ instance.title }}</a></p>
     <p>{{ instance.content }}</p>

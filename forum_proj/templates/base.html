@@ -1,17 +1,11 @@
-{% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Strona domowa</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-    crossorigin="anonymous">
-    <link rel='stylesheet' href="{% static 'css/post.css' %}">
 </head>
 <body>
-<div id='authenticated'>
+<div>
     <h1><a href='/'>Forum</a></h1>
     {% if user.is_authenticated %}
         <h3>Cześć {{user}}!</h3>

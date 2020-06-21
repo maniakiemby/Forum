@@ -3,38 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Strona domowa</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'base_style.css' %}">
 </head>
 <body>
-<div>
-    <h1><a href='/'>Forum</a></h1>
-    {% if user.is_authenticated %}
-        <h3>Cześć {{user}}!</h3>
-    {% else %}
-        <h3>Cześć Użytkowniku !</h3>
-    {% endif %}
+    <header>
+        <div class="header-container">
+            <h1><a href='/'>Forum</a></h1>
+            <div class="header-context"></div>
+                <nav class="header-menu">
+                    <ul class = "sidebar-nav">
+                        <li><input type="text" placeholder="Search.."></li>
+                        {% if user.is_authenticated %}
+                            <li> Użytkownik:
+                                <a href="{% url 'user_panel:user-view' %}">{{ user.get_username }}</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'user_panel:logout' %}? next={{ request.path }}">Wyloguj się</a>
+                                </li>
+                        {% else %}
+                            <li>Nie jesteś zalogowany</li>
+                            <li>
+                                <a href="{% url 'user_panel:login' %}? next={{ request.path }}">Zaloguj się</a>
+                            </li>
+                        {% endif %}
+                        <li><a href="{% url 'user_panel:create-user' %}">Rejestracja</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="content">
 
-    <ul>
-        {% if user.is_authenticated %}
-            <li> Użytkownik:
-                <a href="{% url 'user_panel:user-view' %}">{{ user.get_username }}</a>
-            </li>
-            <li>
-                <a href="{% url 'user_panel:logout' %}? next={{ request.path }}">Wyloguj się</a>
-            </li>
-        {% else %}
-            <li>Nie jesteś zalogowany</li>
-            <li>
-                <a href="{% url 'user_panel:login' %}? next={{ request.path }}">Zaloguj się</a>
-            </li>
-        {% endif %}
-        <li>
-            <a href="{% url 'user_panel:create-user' %}">rejestracja</a>
-        </li>
-    </ul>
-</div>
         {% block content %}
 
         {% endblock %}
-
+    </div>
 </body>
 </html>

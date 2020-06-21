@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
+from django.contrib.auth import authenticate, login
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 # from django.contrib.auth.forms import UserChangeForm, UserModel
 from django.views.generic import (
     FormView,
-    UpdateView
+    UpdateView,
 )
 
 from .forms import (
@@ -21,6 +22,10 @@ class CreateUserView(FormView):
 
     def form_valid(self, form):
         form.save()
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password1']
+        user = authenticate(username=username, password=password)
+        login(self.request, user)
         return super(CreateUserView, self).form_valid(form)
 
 

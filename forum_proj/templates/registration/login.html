@@ -9,7 +9,7 @@
 
 {% if user.is_authenticated %}
   <p>Jesteś zalogowany !</p>
-  <p><a href="{% url 'post:home-view' %}">Wróć</a></p>
+  <p><a href="{% url 'post:home-view' %}">Wróć do strony głównej</a></p>
 {% else %}
 
   {% if next %}

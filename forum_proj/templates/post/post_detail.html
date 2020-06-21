@@ -2,17 +2,17 @@
 
 {% block content %}
 
-<h2><p>{{ object.title }}</p></h2>
-<h3><p>{{ object.content }}</p></h3>
+<h3><p>{{ object.title }}</p></h3>
+<h5><p>{{ object.content }}</p></h5>
 
 {% if user.is_authenticated and user == object.author %}
     <a href="update/">Edytuj post</a>
 {% endif %}
 
     {% for comment in comments %}
-        <h4>{{ comment.author }}</h4>
-        <h4>{{ comment.content }}</h4>
-        <h6>{{ comment.date_create }}</h6>
+        <h4 id='comment-author'>{{ comment.author }}</h4>
+        <h4 id='commentc-content'>{{ comment.content }}</h4>
+        <h6 id='comment-date_create'>{{ comment.date_create }}</h6>
         {% if user == comment.author %}
             <a href="{{ comment.id }}/update/">Edytuj komentarz</a>
         {% endif %}

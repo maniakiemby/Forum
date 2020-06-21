@@ -1,0 +1,15 @@
+body {
+    background-color: ghostwhite;
+}
+h1 a {
+    color: rgb(107, 0, 179);
+}
+h2 a {
+    color: cadetblue;
+}
+h4 {
+    color: darkslategray;
+}
+h6 {
+    color:darkgray;
+}

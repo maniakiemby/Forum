@@ -1,10 +1,17 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Strona domowa</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+    crossorigin="anonymous">
+    <link rel='stylesheet' href="{% static 'css/post.css' %}">
 </head>
 <body>
+<div id='authenticated'>
     <h1><a href='/'>Forum</a></h1>
     {% if user.is_authenticated %}
         <h3>Cześć {{user}}!</h3>
@@ -12,7 +19,7 @@
         <h3>Cześć Użytkowniku !</h3>
     {% endif %}
 
-    <ul class = "sidebar-nav">
+    <ul>
         {% if user.is_authenticated %}
             <li> Użytkownik:
                 <a href="{% url 'user_panel:user-view' %}">{{ user.get_username }}</a>
@@ -30,10 +37,10 @@
             <a href="{% url 'user_panel:create-user' %}">rejestracja</a>
         </li>
     </ul>
+</div>
+        {% block content %}
 
-    {% block content %}
-
-    {% endblock %}
+        {% endblock %}
 
 </body>
 </html>

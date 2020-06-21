@@ -41,8 +41,10 @@ form {
 }
 
 li {
+    color: red;
     position: relative;
     display: block;
     text-align: left;
     padding-right: 10px;
 }
+

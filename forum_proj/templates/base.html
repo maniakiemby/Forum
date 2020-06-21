@@ -16,7 +16,9 @@
                     <ul class = "sidebar-nav">
                         <li><input type="text" placeholder="Search.."></li>
                         {% if user.is_authenticated %}
-                            <li> Użytkownik: {{user.get_username}} </li>
+                            <li> Użytkownik:
+                                <a href="{% url 'user_panel:user-view' %}">{{ user.get_username }}</a>
+                            </li>
                             <li><a href="{% url 'user_panel:logout' %}? next={{ request.path }}">Wyloguj się</a></li>
                         {% else %}
                             <li>Nie jesteś zalogowany</li>

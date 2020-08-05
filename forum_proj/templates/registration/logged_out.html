@@ -1,8 +1,18 @@
 {% extends 'base.html' %}
 
 
+{% block head %}
+{% endblock head %}
+
+{% block navbar %}
+{% include 'search_navbar.html' %}
+{% include 'login_navbar.html' %}
+{% include 'registration_navbar.html' %}
+{% endblock navbar %}
+
 {% block content %}
+<div id="logged-out">
     <p>Wylogowano !</p>
-    <a href="{% url 'user_panel:login' %}">zaloguj ponownie</a>
-    <a href="{% url 'post:home-view' %}">Kontynuuj przeglądanie</a>
+    <a class="button-a" href="{% url 'post:home-view' %}">Wróc do strony głównej</a>
+</div>
 {% endblock %}

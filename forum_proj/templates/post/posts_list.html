@@ -1,15 +1,47 @@
 {% extends 'base.html' %}
 
 
+{% block navbar %}
+{% include 'search_navbar.html' %}
+
+{% if user.is_authenticated %}
+{% else %}
+<div>
+    {% include 'registration_navbar.html' %}
+    {% endif%}
+
+    {% include 'login_navbar.html' %}
+</div>
+{% endblock navbar %}
+
 {% block content %}
+
+<div id="content-container"></div>
 
 {% include 'post/add_post_navbar.html' %}
 
-<div>
     {% for instance in object_list %}
-        <p><a href='{{ instance.get_absolute_url }}'>{{ instance.title }}</a></p>
-        <p>{{ instance.content }}</p>
+        <div class="object">
+            <div class="post-header-container">
+                <li class="post-title">
+                    <a class="post-title-href" href='{{ instance.get_absolute_url }}'>
+                        {{ instance.title }}
+                    </a>
+                </li>
+                <li class="post-date">
+                    {{ instance.date_modified }}
+                </li>
+            </div>
+            <div class="post-content-container">
+                <li class="post-content">
+                    {{ instance.content }}
+                </li>
+            </div>
+        </div>
     {% endfor %}
 </div>
+
+<script src="static/post/js/posts_list.js"></script>
+<script src="static/jquery.js"></script>
 
 {% endblock %}

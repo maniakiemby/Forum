@@ -1,0 +1,10 @@
+{% block navbar %}
+
+{% if user.is_authenticated %}
+        <p class='header-name'><a href="{% url 'user_panel:user-view' %}">{{ user.get_username }}</a></p>
+        <p class='header-log'><a href="{% url 'user_panel:logout' %}? next={{ request.path }}">Wyloguj</a></p>
+{% else %}
+        <p class='header-log'><a href="{% url 'user_panel:login' %}? next={{ request.path }}">Zaloguj</a></p>
+{% endif %}
+
+{% endblock navbar %}

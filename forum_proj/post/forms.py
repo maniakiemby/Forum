@@ -6,21 +6,23 @@ from .models import Post, Comment
 
 class PostForm(forms.ModelForm):
     title = forms.CharField(
-        label='Tu wpisz tytuł',
+        label='',
         max_length=200,
         widget=forms.Textarea(
             attrs={
                 'cols': 75,
-                'rows': 5
+                'rows': 5,
+                'placeholder': 'Tu wpisz tytuł'
             }
         ),
     )
     content = forms.CharField(
-        label='Tutaj opisz swój pomysł',
+        label='',
         widget=forms.Textarea(
             attrs={
                 'cols': 75,
-                'rows': 50
+                'rows': 30,
+                'placeholder': 'Tutaj opisz swój pomysł'
             }
         ),
         strip=False,
@@ -41,8 +43,10 @@ class CommentForm(forms.ModelForm):
         max_length=500,
         widget=forms.Textarea(
             attrs={
+                'cols': 75,
+                'rows': 1,
                 'placeholder': "Dodaj swój komentarz..",
-                'class': "new-class-name two",
+                'class': "add-comment-widget"
             },
         )
     )

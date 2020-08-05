@@ -1,13 +1,26 @@
 {% extends 'base.html' %}
 
+
+{% block head %}
+<title>Edycja</title>
+{% endblock head %}
+
+{% block navbar %}
+{% include 'search_navbar.html' %}
+{% include 'login_navbar.html' %}
+{% endblock navbar %}
+
 {% block content %}
 
-<form action='.' method='POST'>{% csrf_token %}
-    {{ form.as_p }}
-    <p>
-        <input type='submit' value="Zatwierdź zmiany" />
-        <a href='../delete/'>całkowicie usuń ten post</a>
-    </p>
-</form>
+<div class="post-create-container">
+    <form action='.' method='POST'>{% csrf_token %}
+        {{ form.as_p }}
+        <p>
+            <a href="../../" class="button-cancel">Anuluj zmiany</a>
+            <input class="button-submit" type='submit' value="Zatwierdź zmiany" />
+            <a href="../delete/" class="button-submit-delete">Usuń ten post</a>
+        </p>
+    </form>
+</div>
 
 {% endblock %}

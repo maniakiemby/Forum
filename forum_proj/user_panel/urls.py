@@ -2,14 +2,14 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 
 from .views import (
-    CreateUserView,
+    RegistrationView,
     UserView
 )
 
 app_name = 'user_panel'
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
-    path('registration/', CreateUserView.as_view(), name='create-user'),
+    path('registration/', RegistrationView.as_view(), name='create-user'),
     path('panel/', UserView.as_view(), name='user-view'),
 
     path('password/', auth_views.PasswordChangeView.as_view(template_name='user_panel/password_change.html', success_url='../password-change/'), name='password'),

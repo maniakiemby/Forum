@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404
 from django.contrib.auth import authenticate, login
 from django.views import View
+from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import User
 # from django.contrib.auth.forms import UserChangeForm, UserModel
@@ -10,14 +11,14 @@ from django.views.generic import (
 )
 
 from .forms import (
-    CreateUserForm,
+    RegistrationForm,
     UpdateUserForm,
 )
 
 
-class CreateUserView(FormView):
+class RegistrationView(FormView):
     template_name = 'registration/registration.html'
-    form_class = CreateUserForm
+    form_class = RegistrationForm
     success_url = '/'
 
     def form_valid(self, form):
@@ -26,7 +27,7 @@ class CreateUserView(FormView):
         password = form.cleaned_data['password1']
         user = authenticate(username=username, password=password)
         login(self.request, user)
-        return super(CreateUserView, self).form_valid(form)
+        return super(RegistrationView, self).form_valid(form)
 
 
 class UserView(LoginRequiredMixin, UpdateView):

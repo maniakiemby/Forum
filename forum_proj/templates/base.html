@@ -2,40 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Strona domowa</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static 'base_style.css' %}">
+
+    {% block head %}
+    <title>Strona domowa</title>
+    {% endblock head %}
+
 </head>
 <body>
-    <header>
-        <div class="header-container">
-            <h1><a href='/'>Forum</a></h1>
-            <div class="header-context"></div>
-                <nav class="header-menu">
-                    <ul class = "sidebar-nav">
-                        <li><input type="text" placeholder="Search.."></li>
-                        {% if user.is_authenticated %}
-                            <li> Użytkownik:
-                                <a href="{% url 'user_panel:user-view' %}">{{ user.get_username }}</a>
-                            </li>
-                            <li><a href="{% url 'user_panel:logout' %}? next={{ request.path }}">Wyloguj się</a></li>
-                        {% else %}
-                            <li>Nie jesteś zalogowany</li>
-                            <li>
-                                <a href="{% url 'user_panel:login' %}? next={{ request.path }}">Zaloguj się</a>
-                            </li>
-                        {% endif %}
-                        <li><a href="{% url 'user_panel:create-user' %}">Rejestracja</a></li>
-                    </ul>
-                </nav>
-            </div>
+    <div class="header-container">
+        <h1 id="name"><a href='/'>Forum</a></h1>
+        <div class="header-context">
+            <ul>
+
+                {% block navbar %}
+
+                {% endblock navbar %}
+
+            </ul>
         </div>
-    </header>
-    <div class="content">
+    </div>
+    <div class="block-content">
 
         {% block content %}
 
-        {% endblock %}
+        {% endblock content %}
+
     </div>
 </body>
 </html>

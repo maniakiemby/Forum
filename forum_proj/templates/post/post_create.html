@@ -1,11 +1,23 @@
 {% extends 'base.html' %}
 
+
+{% block head %}
+<title>Edycja</title>
+{% endblock head %}
+
+{% block navbar %}
+{% include 'search_navbar.html' %}
+{% include 'login_navbar.html' %}
+{% endblock navbar %}
+
 {% block content %}
 
-<b>{{ request.user }}, o czym chciałbyś napisać ?</b>
-<form action='.' method='POST'>{% csrf_token %}
-    {{ form.as_p }}
-    <p><input type='submit' value="zatwierdź" /></p>
-</form>
+<div class="post-create-container">
+    <b id="post-create-text">{{ request.user }}, o czym chciałbyś napisać ?</b>
+    <form class="post-create-form" action='.' method='POST'>{% csrf_token %}
+        {{ form.as_p }}
+        <input class="button-submit" type='submit' value="zatwierdź" />
+    </form>
+</div>
 
 {% endblock %}

@@ -1,46 +1,29 @@
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registration</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'user_panel/css/registration_style.css' %}">
-    
-</head>
-<body>
+
+{% block head %}
+<title>Rejestracja</title>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'user_panel/css/registration_style.css' %}">
+{% endblock head %}
+
+{% block navbar %}
+{% endblock navbar%}
+
+{% block content %}
     <div class="form-container">
         <form action="" method="post">
-            <h3>Registration</h3>
+            <h3>Rejestracja</h3>
             {% csrf_token %}
-            <div class="form-field input-name">
-                <!-- <div>{{ form.username.label }}</div> -->
-                {{form.username}}
-            </div>
-            <div class="form-field input-email">
-                <!-- <div>{{ form.email.label }}</div> -->
-                {{form.email}}
-            </div>
-            <div class="form-field input-password1">
-                <!-- {{ form.password1.label }} -->
-                {{form.password1}}
-            </div>
-            <div class="form-field input-password2">
-                <!-- {{ form.password2.label }} -->
-                {{form.password2}}
+            <div class='form-field input'>
+                {{ form.as_p }}
             </div>
             <div>
-                <button class="form-field button-submit" type="submit">Register account</button>
-            </div>
-            <div class="errors">
-                {{form.errors}}
+                <button class="form-field button-submit" type="submit">Zarejestruj konto</button>
             </div>
             <div>
-                <p class="form-field">Already have an account? <a href="{% url 'user_panel:login' %}? next={{ request.path }}"> Login </a> </p> 
+                <p class="form-field">Posiadasz już konto ? <a href="{% url 'user_panel:login' %}? next={{ request.path }}">Zaloguj</a> </p>
             </div>
-    </form>
+        </form>
     </div>
-</body>
-<script src="{% static 'user_panel/js/registration.js' %}"></script>
-</html>
+{% endblock %}

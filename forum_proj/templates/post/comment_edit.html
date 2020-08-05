@@ -1,11 +1,25 @@
 {% extends 'base.html' %}
 
+
+{% block head %}
+<title>Edycja</title>
+{% endblock head %}
+
+{% block navbar %}
+{% include 'search_navbar.html' %}
+{% include 'login_navbar.html' %}
+{% endblock navbar %}
+
 {% block content %}
+
+<div class="comment-edit-container">
     <form action='.' method='POST'>{% csrf_token %}
-        {{ form.as_p }}
+        <div class="object">{{ form.as_p }}</div>
         <p>
-            <input type='submit' value='zatwierdź zmiany'/>
-            <a href="../delete/">całkowicie usuń komentarz</a>
+            <a href="../../" class="button-cancel">Anuluj zmiany</a>
+            <input class="button-submit" type='submit' value='Zatwierdź zmiany'/>
+            <a href="../delete/" class="button-submit-delete">Usuń komentarz</a>
         </p>
     </form>
+</div>
 {% endblock %}

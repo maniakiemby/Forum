@@ -1,11 +1,26 @@
 {% extends 'base.html' %}
 
+
+{% block head %}
+<title>Edycja</title>
+{% endblock head %}
+
+{% block navbar %}
+{% include 'search_navbar.html' %}
+{% include 'login_navbar.html' %}
+{% endblock navbar %}
+
 {% block content %}
 
-<form action='.' method='POST'>{% csrf_token %}
-    <h3>Czy na pewno chcesz usunąć swój komentarz ?</h3>
-    <h2>{{ object.content }}</h2>
-    <p><input type='submit' value='Usuń ten komentarz'/> <a href='../update/'>Zabierz mnie stąd</a></p>
-</form>
+<div class="post-delete">
+    <form action='.' method='POST'>{% csrf_token %}
+        <h3>Czy na pewno chcesz usunąć swój komentarz ?</h3>
+        <p class="object">{{ object.content }}</p>
+        <p>
+            <input class="button-submit-delete" type='submit' value='Usuń ten komentarz'/>
+            <a href='../update/' class="button-cancel">Zabierz mnie stąd</a>
+        </p>
+    </form>
+</div>
 
 {% endblock %}

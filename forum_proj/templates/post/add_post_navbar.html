@@ -1,1 +1,4 @@
-<h2><p><a href="{% url 'post:post-create' %}">Dodaj własny post</a></p></h2>
+{% if user.is_authenticated %}
+<p class="object" id="add-post-container"><a id="add-post-input" href="{% url 'post:post-create' %}" type="bottom">O czym chciałbyś napisać, {{ user.first_name }} ?</a></p>
+
+{% endif %}
